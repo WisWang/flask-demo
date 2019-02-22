@@ -1,0 +1,9 @@
+sudo python3 -m twine upload --repository-url http://192.168.56.11:8081/artifactory/api/pypi/pypi-local dist/* -u admin -p Prinmic7LxbMXxE
+
+pip3 install  wis-demo -i http://192.168.56.11:8081/artifactory/api/pypi/pypi-local/simple
+
+pip3 install wis-demo -i http://192.168.56.11:8081/artifactory/api/pypi/pypi/simple --trusted-host 192.168.56.11
+pip3 install wis-demo -i http://wis.com/artifactory/api/pypi/pypi/simple --trusted-host wis.com
+
+
+pip3 install wis-demo -i http://wis.com/artifactory/api/pypi/pypi/simple --trusted-host wis.com

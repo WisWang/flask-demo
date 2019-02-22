@@ -1,0 +1,14 @@
+- hosts: node1
+  max_fail_percentage: 30
+  serial: 2
+  vars:
+    app_name: flask-demo
+    app_version: v2
+  tasks:
+  - name: Check app health
+    uri:
+      method: GET
+      url: "http://{{ ansible_host }}:5000/healthz"
+  - name: hello
+    shell: date
+
