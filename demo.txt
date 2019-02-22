@@ -7,3 +7,10 @@ pip3 install wis-demo -i http://wis.com/artifactory/api/pypi/pypi/simple --trust
 
 
 pip3 install wis-demo -i http://wis.com/artifactory/api/pypi/pypi/simple --trusted-host wis.com
+
+
+https://www.cnblogs.com/lihuang/articles/4205540.html
+
+
+docker pull wis.com/frog/wis:v3
+
