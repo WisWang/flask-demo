@@ -7,6 +7,7 @@ node {
     def tagName='wis.com/frog/flask-demo:'+env.BUILD_NUMBER
       stage('docker image build') {
         buildInfo.env.capture = true
+        buildInfo.env.collect()
         println('starting build '+env.BUILD_NUMBER)
         sh 'pwd'
         sh 'ls -al'
