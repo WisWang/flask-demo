@@ -3,7 +3,7 @@ node {
     git url: 'https://github.com/WisWang/flask-demo', branch: 'master'
     def rtServer = def rtServer = Artifactory.server "wis"
     def rtDocker = Artifactory.docker server: rtServer
-    def buildInfo = Artifactory.newBuildInfo()
+    #def buildInfo = Artifactory.newBuildInfo()
 
       stage('docker image build') {
         buildInfo.env.collect()
@@ -16,7 +16,7 @@ node {
         docker.build(tagName)
         buildInfo.env.vars['status2'] = 'pre-test'
         artDocker.push(tagName, 'frog', buildInfo)
-
+        def buildInfo = rtDocker.push tagName, 'frog'
         artServer.publishBuildInfo(buildInfo)
         println('Retagging Image')
 

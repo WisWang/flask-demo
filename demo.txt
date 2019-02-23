@@ -18,3 +18,10 @@ alpine
 google distroless
 
 docker run --net=host -d wis.com/frog/flask-demo:v2
+
+sudo usermod -a -G docker jenkins
+systemctl restart jenkins
+
+
+
+
