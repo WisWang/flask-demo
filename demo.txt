@@ -14,3 +14,7 @@ https://www.cnblogs.com/lihuang/articles/4205540.html
 
 docker pull wis.com/frog/wis:v3
 
+alpine
+google distroless
+
+docker run --net=host -d wis.com/frog/flask-demo:v2

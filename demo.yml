@@ -5,10 +5,18 @@
     app_name: flask-demo
     app_version: v2
   tasks:
+  - name: stop app
+    docker_container:
+      name: flask-demo
+      state: stopped
+  - name: run app
+    shell: "docker run --network=host -d wis.com/frog/flask-demo:v2"
+  - name: wait for app port start
+    wait_for: port=5000
   - name: Check app health
     uri:
       method: GET
       url: "http://{{ ansible_host }}:5000/healthz"
-  - name: hello
-    shell: date
+
+
 
