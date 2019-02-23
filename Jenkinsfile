@@ -3,7 +3,7 @@ node {
     git url: 'https://github.com/WisWang/flask-demo', branch: 'master'
     rtServer (
         id: "Artifactory-1",
-        url: "http://wis.com/artifactory",
+        url: "http://192.168.56.11:8081/artifactory",
         username: "admin",
         password: "Prinmic7LxbMXxE",
         bypassProxy: true
