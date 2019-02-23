@@ -5,7 +5,8 @@ node {
         id: "Artifactory-1",
         url: "http://wis.com/artifactory",
         username: "admin",
-        password: "Prinmic7LxbMXxE"
+        password: "Prinmic7LxbMXxE",
+        bypassProxy: true
 
     )
     def rtDocker = Artifactory.docker server: rtServer
