@@ -12,17 +12,15 @@ node {
         sh 'pwd'
         sh 'ls -al'
         sh 'cat Dockerfile'
-        sh ""
         docker.build(tagName)
         rtDocker.push(tagName, 'frog', buildInfo)
         rtServer.publishBuildInfo(buildInfo)
         println('Retagging Image')
-
-        sh "docker build ok"
+        sh "echo docker build ok"
       }
       stage('deploy to  production') {
       	sh "sudo ansible-play demo.yml -e "
-        sh "docker build ok"
+        sh "echo docker build ok"
       }
 
 
