@@ -1,7 +1,13 @@
 node {
 
     git url: 'https://github.com/WisWang/flask-demo', branch: 'master'
-    def rtServer = Artifactory.server("wis")
+    rtServer (
+        id: "Artifactory-1",
+        url: "http://wis.com/artifactory",
+        username: "admin",
+        password: "Prinmic7LxbMXxE"
+
+    )
     def rtDocker = Artifactory.docker server: rtServer
     def buildInfo = Artifactory.newBuildInfo()
 
