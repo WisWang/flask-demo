@@ -1,14 +1,7 @@
 node {
 
     git url: 'https://github.com/WisWang/flask-demo', branch: 'master'
-    rtServer (
-        id: "Artifactory-1",
-        url: "http://192.168.56.11:8081/artifactory",
-        username: "admin",
-        password: "Prinmic7LxbMXxE",
-        bypassProxy: true
-
-    )
+    def rtServer = def rtServer = Artifactory.server "wis"
     def rtDocker = Artifactory.docker server: rtServer
     def buildInfo = Artifactory.newBuildInfo()
 
