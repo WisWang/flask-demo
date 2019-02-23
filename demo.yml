@@ -5,10 +5,12 @@
     app_name: flask-demo
     app_version: v2
   tasks:
+#  - name: stop app
+#    docker_container:
+#      name: "{{ app_name }}"
+#      state: stopped
   - name: stop app
-    docker_container:
-      name: "{{ app_name }}"
-      state: stopped
+    shell: "docker stop $(docker ps|tail -1|awk '{print $1}')"
   - name: run app
     shell: "docker run --network=host -d {{ tagName }}"
   - name: wait for app port start
