@@ -14,7 +14,6 @@ node {
         docker.build(tagName)
         rtDocker.push(tagName, 'frog', buildInfo)
         rtServer.publishBuildInfo(buildInfo)
-        println('Retagging Image')
         sh "echo docker build ok"
       }
       stage('deploy to  production') {

@@ -1,6 +1,6 @@
 - hosts: node1
   max_fail_percentage: 30
-  serial: 2
+  serial: 30%
   vars:
     app_name: flask-demo
     app_version: v2
