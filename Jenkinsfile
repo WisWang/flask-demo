@@ -15,8 +15,7 @@ node {
         sh ""
         docker.build(tagName)
         rtDocker.push(tagName, 'frog', buildInfo)
-        def buildInfo = rtDocker.push tagName, 'frog'
-        artServer.publishBuildInfo(buildInfo)
+        rtServer.publishBuildInfo(buildInfo)
         println('Retagging Image')
 
         sh "docker build ok"
