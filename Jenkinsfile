@@ -4,11 +4,10 @@ node {
     def rtServer = Artifactory.server "wis"
     def rtDocker = Artifactory.docker server: rtServer
     def buildInfo = Artifactory.newBuildInfo()
-
+    def tagName='wis.com/frog/flask-demo:'+env.BUILD_NUMBER
       stage('docker image build') {
         buildInfo.env.capture = true
         println('starting build '+env.BUILD_NUMBER)
-        def tagName='wis.com/frog/flask-demo:'+env.BUILD_NUMBER
         sh 'pwd'
         sh 'ls -al'
         sh 'cat Dockerfile'
