@@ -10,7 +10,7 @@
 #      name: "{{ app_name }}"
 #      state: stopped
   - name: stop app
-    shell: "docker stop $(docker ps|tail -1|awk '{print $1}')"
+    shell: "docker stop $(docker ps|tail -1|awk '{print $1}')||echo"
   - name: run app
     shell: "docker run --network=host -d {{ tagName }}"
   - name: wait for app port start
