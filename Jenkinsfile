@@ -19,7 +19,7 @@ node {
         sh "echo docker build ok"
       }
       stage('deploy to  production') {
-      	sh "sudo ansible-play demo.yml -e "
+      	sh "sudo ansible-playbook demo.yml -e tagName=$tagName"
         sh "echo docker build ok"
       }
 

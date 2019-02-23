@@ -10,7 +10,7 @@
       name: flask-demo
       state: stopped
   - name: run app
-    shell: "docker run --network=host -d wis.com/frog/flask-demo:v2"
+    shell: "docker run --network=host -d {{ tagName }}"
   - name: wait for app port start
     wait_for: port=5000
   - name: Check app health
