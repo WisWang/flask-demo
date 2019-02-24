@@ -19,6 +19,7 @@ node {
         rtServer.publishBuildInfo(buildInfo)
     }
     stage('Build runtime') {
+        rtDocker.addProperty("Build", "ok")
         sh "echo Build runtime"
     }
     stage('Verify runtime') {
