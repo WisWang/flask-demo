@@ -6,7 +6,7 @@ node {
     def buildInfo = Artifactory.newBuildInfo()
     def tagName='wis.com/frog/flask-demo:'+env.BUILD_NUMBER
 
-    stage('docker image build') {
+    stage('Artifacts build') {
         buildInfo.env.capture = true
         buildInfo.env.collect()
         println('starting build '+env.BUILD_NUMBER)
@@ -14,6 +14,7 @@ node {
         sh 'ls -al'
         sh 'cat Dockerfile'
         docker.build(tagName)
+        rtDocker.addProperty("project-name", "docker1").addProperty("status", "stable")
         rtDocker.push(tagName, 'frog', buildInfo)
         rtServer.publishBuildInfo(buildInfo)
     }
@@ -21,7 +22,7 @@ node {
         sh "echo Build runtime"
     }
     stage('Verify runtime') {
-        sh "Verify runtime"
+        sh "echo Verify runtime"
     }
     stage('App runtime') {
         sh "sudo ansible-playbook demo.yml -e tagName=$tagName"
