@@ -5,6 +5,7 @@ node {
     def rtDocker = Artifactory.docker server: rtServer
     def buildInfo = Artifactory.newBuildInfo()
     def tagName='wis.com/frog/flask-demo:'+env.BUILD_NUMBER
+    def addArtifactsProperty="curl -X PUT  -H 'Authorization: Basic YWRtaW46UHJpbm1pYzdMeGJNWHhF' 'http://wis.com/artifactory/api/storage/frog/flask-demo/"+env.BUILD_NUMBER+"?properties="
 
     stage('Artifacts build') {
         buildInfo.env.capture = true
@@ -19,15 +20,18 @@ node {
         rtServer.publishBuildInfo(buildInfo)
     }
     stage('Build runtime') {
-        rtDocker.addProperty("Build", "ok")
-        sh "echo Build runtime"
+        sh addArtifactsProperty+"build_runtime=passed"+"'"
+        sh "echo Build runtime passed"
+
     }
     stage('Verify runtime') {
-        sh "echo Verify runtime"
+        sh addArtifactsProperty+"verify_runtime=passed"+"'"
+        sh "echo Verify runtime passed"
     }
     stage('App runtime') {
         sh "sudo ansible-playbook demo.yml -e tagName=$tagName"
-        sh "echo docker build ok"
+        sh addArtifactsProperty+"app_runtime=passed"+"'"
+        sh "echo App runtime passed"
     }
 
 
